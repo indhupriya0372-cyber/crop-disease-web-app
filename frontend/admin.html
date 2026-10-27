@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | AgriCare AI</title>
+  <meta name="description" content="Administrator panel — users, predictions and model statistics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">🌾</span>
+        <span class="brand-text">Agri<span class="brand-accent">Care</span>&nbsp;AI</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="diagnose.html">Diagnose</a>
+        <a href="admin.html" class="active">Admin</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-eyebrow">Administrator</p>
+      <h1 class="page-title">Admin Control Panel 🛡️</h1>
+      <p class="page-sub">Monitor users, every diagnosis recorded by the model and crop-level statistics.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="dash-stats">
+        <div class="dash-stat card"><span class="dash-stat-icon">👥</span><span class="dash-stat-num" id="admUsers">0</span><span class="dash-stat-label">Registered users</span></div>
+        <div class="dash-stat card"><span class="dash-stat-icon">🧑‍🌾</span><span class="dash-stat-num" id="admFarmers">0</span><span class="dash-stat-label">Farmer accounts</span></div>
+        <div class="dash-stat card"><span class="dash-stat-icon">🔬</span><span class="dash-stat-num" id="admPredictions">0</span><span class="dash-stat-label">Predictions run</span></div>
+        <div class="dash-stat card"><span class="dash-stat-icon">📊</span><span class="dash-stat-num" id="admConf">—</span><span class="dash-stat-label">Avg. confidence</span></div>
+      </div>
+
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-panel="panelPredictions">🔬 All Predictions</button>
+        <button class="admin-tab" data-panel="panelUsers">👥 Users</button>
+        <button class="admin-tab" data-panel="panelCrops">🌱 Crop Breakdown</button>
+      </div>
+
+      <!-- Predictions panel -->
+      <div class="admin-panel" id="panelPredictions">
+        <div class="dash-toolbar">
+          <h2 class="dash-heading">All predictions</h2>
+          <button class="btn btn-ghost btn-small" id="refreshAdmin">↻ Refresh</button>
+        </div>
+        <div class="table-wrap card">
+          <table class="data-table">
+            <thead>
+              <tr><th>Photo</th><th>Date</th><th>Farmer</th><th>Crop</th><th>Diagnosis</th><th>Level</th><th>Confidence</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="adminPredBody">
+              <tr><td colspan="8" class="table-empty">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="adm-legend">✅ reviewed &nbsp;·&nbsp; ⬜ pending &nbsp;·&nbsp; ✎ add admin note &nbsp;·&nbsp; 🗑 delete record and photo</p>
+      </div>
+
+      <!-- Users panel -->
+      <div class="admin-panel hidden" id="panelUsers">
+        <div class="dash-toolbar">
+          <h2 class="dash-heading">Users</h2>
+        </div>
+        <div class="card create-user-card">
+          <h3>Create a user</h3>
+          <form id="createUserForm" class="create-user-form">
+            <input type="text" id="cuName" placeholder="Full name" required />
+            <input type="email" id="cuEmail" placeholder="email@example.com" required />
+            <input type="password" id="cuPassword" placeholder="Password (6+ chars)" required />
+            <select id="cuRole">
+              <option value="farmer">Farmer</option>
+              <option value="admin">Admin</option>
+            </select>
+            <button type="submit" class="btn btn-primary btn-small">➕ Add user</button>
+          </form>
+          <p class="form-status" id="cuStatus" aria-live="polite"></p>
+        </div>
+        <div class="table-wrap card">
+          <table class="data-table">
+            <thead>
+              <tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Scans</th><th>Joined</th><th></th></tr>
+            </thead>
+            <tbody id="adminUsersBody">
+              <tr><td colspan="7" class="table-empty">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Crop breakdown panel -->
+      <div class="admin-panel hidden" id="panelCrops">
+        <div class="dash-toolbar">
+          <h2 class="dash-heading">Predictions by crop</h2>
+        </div>
+        <div class="card"><div id="cropBreakdown" class="crop-breakdown"><p class="table-empty">No data yet.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="brand-text">🌾 AgriCare AI</p>
+        <p class="footer-note">AI-Driven Crop Disease Prediction Web App (CNN Image Classifier). B.Tech Major Project.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="diagnose.html">Diagnose</a>
+        <a href="admin.html">Admin</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="#" id="footerLogout">Logout</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> AgriCare AI · Academic demonstration only</p>
+      <p><a href="#top">Back to top ↑</a></p>
+    </div>
+  </footer>
+
+  <script src="js/site.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

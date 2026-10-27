@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Backend (Node, port 5001)",
+      "program": "${workspaceFolder}/backend/server.js",
+      "cwd": "${workspaceFolder}/backend",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Open website (127.0.0.1:5001)",
+      "url": "http://127.0.0.1:5001/login.html",
+      "webRoot": "${workspaceFolder}/frontend"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Run AgriCare AI (Backend + Website)",
+      "configurations": ["Backend (Node, port 5001)", "Open website (127.0.0.1:5001)"],
+      "stopAll": true
+    }
+  ]
+}

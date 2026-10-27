@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In | AgriCare AI</title>
+  <meta name="description" content="Login to AgriCare AI as a farmer to save your diagnosis history, or as an administrator to manage the model." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">🌾</span>
+        <span class="brand-text">Agri<span class="brand-accent">Care</span>&nbsp;AI</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <section class="auth-wrap">
+    <div class="container auth-grid">
+
+      <!-- Marketing panel -->
+      <div class="auth-aside">
+        <p class="section-eyebrow">Welcome back</p>
+        <h1 class="auth-title">Your crops, <span class="gradient-text">your dashboard</span></h1>
+        <p class="auth-lead">Sign in to run diagnoses, keep a season-by-season history and let administrators monitor the model's performance.</p>
+
+        <div class="role-cards">
+          <div class="role-card">
+            <span class="role-icon">🧑‍🌾</span>
+            <div>
+              <h3>Farmer account</h3>
+              <p>Upload leaf photos, get instant diagnosis and save every result to your history.</p>
+            </div>
+          </div>
+          <div class="role-card">
+            <span class="role-icon">🛡️</span>
+            <div>
+              <h3>Admin account</h3>
+              <p>Manage users, review every prediction and monitor model statistics.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-creds">
+          <p class="demo-creds-title">Demo logins</p>
+          <p>👨‍🌾 <code>testfarmer@example.com</code> / <code>Farmer12345</code></p>
+          <p>🛡️ <code>admin@agricare.ai</code> / <code>admin12345</code></p>
+          <p class="demo-creds-note">Select the matching Farmer or Admin tab before logging in.</p>
+        </div>
+      </div>
+
+      <!-- Auth card -->
+      <div class="card auth-card">
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab active" id="tabLogin" data-mode="login" role="tab">Login</button>
+          <button class="auth-tab" id="tabRegister" data-mode="register" role="tab">Register</button>
+        </div>
+
+        <p class="conn-banner warn" id="connBanner" hidden></p>
+
+        <div class="role-select" id="roleSelect">
+          <button class="role-pill active" data-role="farmer">🧑‍🌾 Farmer</button>
+          <button class="role-pill" data-role="admin">🛡️ Admin</button>
+        </div>
+
+        <form id="loginForm" class="auth-form" novalidate>
+          <div class="field">
+            <label for="authName">Full name <span class="reg-only hidden">(register only)</span></label>
+            <input type="text" id="authName" name="name" placeholder="e.g. Ramesh Patel" autocomplete="name" class="reg-only hidden" />
+          </div>
+          <div class="field">
+            <label for="authEmail">Email address</label>
+            <input type="email" id="authEmail" name="email" placeholder="you@example.com" autocomplete="username" required />
+          </div>
+          <div class="field">
+            <label for="authPassword">Password</label>
+            <input type="password" id="authPassword" name="password" placeholder="••••••••" autocomplete="current-password" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="authSubmit">🔐 Login</button>
+          <p class="form-status" id="authStatus" aria-live="polite"></p>
+        </form>
+
+        <p class="auth-hint" id="authHint">Admins: choose the <strong>Admin</strong> tab above, then log in.</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/site.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

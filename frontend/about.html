@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About the Project | AgriCare AI</title>
+  <meta name="description" content="About the AI-Driven Crop Disease Prediction Web App: problem statement, proposed system, objectives, scope, literature survey and team." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">🌾</span>
+        <span class="brand-text">Agri<span class="brand-accent">Care</span>&nbsp;AI</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="diagnose.html">Diagnose</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-eyebrow">Project Overview</p>
+      <h1 class="page-title">About the Project</h1>
+      <p class="page-sub">Abstract, introduction, objectives, scope and the research behind AgriCare AI.</p>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="section" id="abstract">
+    <div class="container two-col">
+      <div class="col-text">
+        <p class="section-eyebrow">Abstract</p>
+        <h2 class="section-title">A Free, Fast Crop Doctor</h2>
+        <p>
+          AgriCare AI is a web application that detects crop diseases instantly from leaf
+          photographs. A Convolutional Neural Network (CNN) trained on the PlantVillage dataset
+          of 54,000+ labelled images classifies leaves into 38 classes across 14 crop species.
+        </p>
+        <p>
+          The farmer uploads a photo, and the model returns the disease name, a confidence score
+          and recommended treatment within two seconds — accessible from any smartphone or PC with
+          almost no training. Model reports a target accuracy above 95%.
+        </p>
+      </div>
+      <div class="col-stats">
+        <div class="stat-card"><p class="stat-big">54,309</p><p class="stat-small">labelled leaf images</p></div>
+        <div class="stat-card"><p class="stat-big">38</p><p class="stat-small">disease + healthy classes</p></div>
+        <div class="stat-card"><p class="stat-big">14</p><p class="stat-small">crop species supported</p></div>
+        <div class="stat-card"><p class="stat-big">&gt;95%</p><p class="stat-small">target accuracy</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem vs Solution -->
+  <section class="section section-alt" id="problem">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-eyebrow">Why It Matters</p>
+        <h2 class="section-title">The Problem We Solve</h2>
+      </div>
+      <div class="compare-grid">
+        <div class="card compare-card negative">
+          <h3>❌ Existing System</h3>
+          <ul>
+            <li>Manual visual inspection — late and unreliable</li>
+            <li>Laboratory PCR / culture tests — slow, costly, scarce</li>
+            <li>Dependence on scarce plant pathologists</li>
+            <li>Bulk, unsafe pesticide application</li>
+            <li>No digital record of farm health</li>
+            <li>Research demos never become usable products</li>
+          </ul>
+        </div>
+        <div class="card compare-card positive">
+          <h3>✅ Proposed System</h3>
+          <ul>
+            <li>Instant AI diagnosis from a phone photo</li>
+            <li>Lightweight CNN (MobileNetV2 / ResNet50)</li>
+            <li>Free, web-based, anytime-anywhere access</li>
+            <li>Condition-specific organic treatment advice</li>
+            <li>Stored diagnosis history per farm</li>
+            <li>Scalable, low-cost, farmer-friendly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Objectives -->
+  <section class="section" id="objectives">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-eyebrow">Goals</p>
+        <h2 class="section-title">Project Objectives</h2>
+      </div>
+      <div class="obj-grid">
+        <div class="card obj-card"><span class="obj-icon">🎯</span><p>Detect crop diseases from leaf images automatically using a CNN-based classifier.</p></div>
+        <div class="card obj-card"><span class="obj-icon">⚡</span><p>Provide diagnosis results in under 2 seconds with a clear confidence score.</p></div>
+        <div class="card obj-card"><span class="obj-icon">💊</span><p>Recommend condition-specific, eco-friendly treatment and prevention measures.</p></div>
+        <div class="card obj-card"><span class="obj-icon">🌐</span><p>Build an easy-to-use web interface accessible from any smartphone or PC.</p></div>
+        <div class="card obj-card"><span class="obj-icon">📈</span><p>Achieve classification accuracy above 95% on the PlantVillage dataset.</p></div>
+        <div class="card obj-card"><span class="obj-icon">🗺️</span><p>Support major Indian crops — tomato, potato, corn, rice, brinjal and more.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scope -->
+  <section class="section section-alt" id="scope">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-eyebrow">Boundaries</p>
+        <h2 class="section-title">Scope of the Project</h2>
+      </div>
+      <div class="scope-grid">
+        <div class="scope-block">
+          <h3>Includes</h3>
+          <ul class="check-list">
+            <li>Disease classification for major food crops</li>
+            <li>Web + mobile-responsive user interface</li>
+            <li>Treatment &amp; prevention recommendations</li>
+            <li>Diagnosis history &amp; user accounts (planned)</li>
+            <li>Confidence scoring &amp; probability display</li>
+          </ul>
+        </div>
+        <div class="scope-block">
+          <h3>Out of Scope (Future Work)</h3>
+          <ul class="check-list muted">
+            <li>Pest &amp; nutrient-deficiency detection</li>
+            <li>Real-time video / drone surveillance</li>
+            <li>Multi-language native mobile apps</li>
+            <li>Offline edge deployment on farm devices</li>
+            <li>Soil &amp; weather data integration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodology -->
+  <section class="section" id="methodology">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-eyebrow">Architecture</p>
+        <h2 class="section-title">Methodology &amp; Technology</h2>
+      </div>
+      <div class="arch-flow">
+        <div class="arch-node">📷<span>Leaf Image</span></div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">🛠️<span>Preprocess</span></div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">🧠<span>CNN Model</span></div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">📊<span>Top-3 &amp; Confidence</span></div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">💡<span>Treatment Advice</span></div>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-item"><span class="tech-icon">🎨</span><h4>Frontend</h4><p>HTML5, CSS3, JavaScript — responsive for desktop &amp; mobile</p></div>
+        <div class="tech-item"><span class="tech-icon">🐍</span><h4>Backend</h4><p>Python · Flask REST API</p></div>
+        <div class="tech-item"><span class="tech-icon">🧠</span><h4>Deep Learning</h4><p>TensorFlow / Keras · CNN with transfer learning (MobileNetV2 / ResNet50)</p></div>
+        <div class="tech-item"><span class="tech-icon">🗂️</span><h4>Dataset</h4><p>PlantVillage — 54,309 labelled leaf images, 38 classes</p></div>
+        <div class="tech-item"><span class="tech-icon">🗄️</span><h4>Database</h4><p>SQLite / PostgreSQL for history &amp; accounts</p></div>
+        <div class="tech-item"><span class="tech-icon">🚀</span><h4>Deployment</h4><p>Render / Railway cloud hosting</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Literature -->
+  <section class="section section-alt" id="literature">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-eyebrow">Research Review</p>
+        <h2 class="section-title">Literature Survey</h2>
+      </div>
+      <div class="lit-grid">
+        <article class="card lit-card">
+          <p class="lit-year">2016</p>
+          <h4>Mohanty, Hughes &amp; Salathé</h4>
+          <p>Trained AlexNet &amp; GoogLeNet on PlantVillage — up to 99.35% accuracy on held-out images.</p>
+        </article>
+        <article class="card lit-card">
+          <p class="lit-year">2017</p>
+          <h4>Sladojevic et al.</h4>
+          <p>Fine-tuned deep network in Caffe: 96.3% accuracy across 13 crop disease classes.</p>
+        </article>
+        <article class="card lit-card">
+          <p class="lit-year">2019</p>
+          <h4>Barbedo (Review)</h4>
+          <p>CNNs are state of the art, but sensitive to real-world background, lighting and growth stage.</p>
+        </article>
+        <article class="card lit-card">
+          <p class="lit-year">2021</p>
+          <h4>Too et al.</h4>
+          <p>Transfer learning (VGG16, Inception, ResNet, DenseNet) maximises accuracy with less data.</p>
+        </article>
+        <article class="card lit-card">
+          <p class="lit-year">2022</p>
+          <h4>Agarwal et al.</h4>
+          <p>MobileNetV2 tomato-leaf CNN at 98.7% — lightweight, ideal for low-cost smartphones.</p>
+        </article>
+        <article class="card lit-card">
+          <p class="lit-year">2024</p>
+          <h4>Recent Advances</h4>
+          <p>Ensembles, vision transformers and Grad-CAM add robustness and explainability.</p>
+        </article>
+      </div>
+      <div class="lit-gap">
+        <div class="card">
+          <h3>🔎 Gap Identified</h3>
+          <p>Existing studies focus on standalone model accuracy. Few deliver an <strong>end-to-end, free, web-based product</strong> with treatment advice and diagnosis history in local languages — exactly what AgriCare AI provides.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="section" id="timeline">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-eyebrow">Plan</p>
+        <h2 class="section-title">Development Timeline</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item done"><span class="tl-dot">✓</span><h4>Zeroth Review</h4><p>Topic, PPT, problem &amp; scope definition</p><span class="tl-date">Week 1</span></div>
+        <div class="tl-item"><span class="tl-dot">2</span><h4>First Review</h4><p>Literature survey, dataset study, UI prototype, model baseline</p><span class="tl-date">Week 4</span></div>
+        <div class="tl-item"><span class="tl-dot">3</span><h4>Second Review</h4><p>CNN training, hyper-parameter tuning, accuracy evaluation</p><span class="tl-date">Week 8</span></div>
+        <div class="tl-item"><span class="tl-dot">4</span><h4>Final Review</h4><p>Full-stack integration, deployment, testing &amp; documentation</p><span class="tl-date">Week 12</span></div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="brand-text">🌾 AgriCare AI</p>
+        <p class="footer-note">AI-Driven Crop Disease Prediction Web App (CNN Image Classifier). B.Tech Major Project.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="diagnose.html">Diagnose</a>
+        <a href="about.html">About Project</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Project</h4>
+        <a href="#objectives">Objectives</a>
+        <a href="#literature">Literature Survey</a>
+        <a href="#timeline">Timeline</a>
+        <a href="contact.html#faq">FAQ</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> AgriCare AI · Academic demonstration only</p>
+      <p><a href="#abstract">Back to top ↑</a></p>
+    </div>
+  </footer>
+
+  <script src="js/site.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Trained model (large binary)
+model/*.h5
+model/*.keras
+
+# Dataset (download separately)
+dataset/
+
+# Local database (users + prediction history)
+agricare.db
+agricare.db-journal
+
+# Leaf photos uploaded by farmers
+uploads/
+
+# Generated test samples / evaluation output
+samples/manifest.json
+samples/evaluation_results.csv
+samples/*-[0-9][0-9].png
+
+# Misc
+.DS_Store
+Thumbs.db
+contact_messages.log
+# Node.js dependencies
+node_modules/
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log
+
+/admin@agricare.ai
+/farmer@agricare.ai

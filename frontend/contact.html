@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | AgriCare AI</title>
+  <meta name="description" content="Contact the AgriCare AI team, send feedback or read the FAQ about the crop disease prediction web app." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">🌾</span>
+        <span class="brand-text">Agri<span class="brand-accent">Care</span>&nbsp;AI</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="diagnose.html">Diagnose</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-eyebrow">Get in Touch</p>
+      <h1 class="page-title">Contact Us</h1>
+      <p class="page-sub">Questions, feedback or a partnership — we would love to hear from you.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <!-- Form -->
+      <div class="card form-card">
+        <h2 class="form-title">Send a Message</h2>
+        <form id="contactForm" novalidate>
+          <div class="field">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Ramesh Kumar" required />
+          </div>
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="e.g. Feedback on the app" required />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Write your message here…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message ✉️</button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+
+      <!-- Contact info -->
+      <div class="contact-info">
+        <div class="info-card">
+          <span class="info-icon">📍</span>
+          <h3>Department</h3>
+          <p>Department of Computer Science &amp; Engineering<br />[Your College Name], [City]</p>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">✉️</span>
+          <h3>Email</h3>
+          <p>team@agricare-ai.example<br />[guide email]</p>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">💬</span>
+          <h3>Connect</h3>
+          <p>GitHub: github.com/[your-org]/crop-disease-prediction<br />LinkedIn / WhatsApp group</p>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">🗓️</span>
+          <h3>Reviews</h3>
+          <p>Zeroth Review: Week 1<br />Final review: Week 12</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-alt" id="faq">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-eyebrow">FAQ</p>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Is this a real AI model? 🤖</button>
+          <div class="faq-a"><p>The site ships with a browser demo classifier so it always works. When you train the real CNN (<code>python train_cnn.py</code>), the Flask backend automatically uses the <code>model/crop_cnn.h5</code> model for actual inference.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Which crops are supported? 🌾</button>
+          <div class="faq-a"><p>Tomato, potato, corn, rice and brinjal (10 classes each in the PlantVillage split), with pepper, grape, apple and citrus knowledge added for future expansion.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">How accurate is it? 📈</button>
+          <div class="faq-a"><p>Research CNNs report up to 99% on the PlantVillage dataset. Our target is above 95% on a held-out test set; we show the confidence score so you know how sure the model is.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Is it free? 💸</button>
+          <div class="faq-a"><p>Yes — the academic version is free. It is designed to be low-cost and accessible even on entry-level smartphones with weak internet.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Should I treat my plant based on this alone? ⚠️</button>
+          <div class="faq-a"><p>This is an academic demonstration and a decision-support tool, not a replacement for a pathologist. Always confirm serious outbreaks with your local agriculture extension officer.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="brand-text">🌾 AgriCare AI</p>
+        <p class="footer-note">AI-Driven Crop Disease Prediction Web App (CNN Image Classifier). B.Tech Major Project.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="diagnose.html">Diagnose</a>
+        <a href="about.html">About Project</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Project</h4>
+        <a href="about.html#objectives">Objectives</a>
+        <a href="about.html#literature">Literature Survey</a>
+        <a href="about.html#timeline">Timeline</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> AgriCare AI · Academic demonstration only</p>
+      <p><a href="#faq">Back to top ↑</a></p>
+    </div>
+  </footer>
+
+  <script src="js/site.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

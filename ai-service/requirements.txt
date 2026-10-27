@@ -1,0 +1,7 @@
+flask>=3.0
+pillow>=10.0
+numpy>=1.24
+
+# ---- Optional: real CNN inference + training (remove # to enable) ----
+# tensorflow>=2.15
+# keras>=3.0

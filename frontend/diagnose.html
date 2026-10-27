@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagnose a Leaf | AgriCare AI</title>
+  <meta name="description" content="Upload a crop leaf photo and get an instant CNN-based disease diagnosis with confidence score and treatment advice." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">🌾</span>
+        <span class="brand-text">Agri<span class="brand-accent">Care</span>&nbsp;AI</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="diagnose.html" class="active">Diagnose</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-eyebrow">The Tool</p>
+      <h1 class="page-title">Diagnose a Leaf</h1>
+      <p class="page-sub">Take a clear photo of the affected leaf, upload it, and let the CNN do the rest.</p>
+      <p class="conn-banner" id="connBanner" hidden></p>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="demo">
+    <div class="container">
+      <div class="demo-grid">
+        <!-- Upload / preview card -->
+        <div class="card upload-card">
+          <div class="drop-zone" id="dropZone">
+            <div class="drop-content" id="dropContent">
+              <div class="drop-icon">🖼️</div>
+              <p class="drop-title">Drag &amp; drop a crop leaf photo</p>
+              <p class="drop-sub">or</p>
+              <label class="btn btn-primary btn-small" for="fileInput">Browse Files</label>
+              <input type="file" id="fileInput" accept="image/*" hidden />
+              <p class="drop-hint">JPG, PNG, WEBP · up to 10 MB</p>
+            </div>
+            <div class="preview hidden" id="previewWrap">
+              <img id="previewImg" alt="Uploaded leaf preview" />
+              <div class="preview-actions">
+                <button class="btn btn-ghost btn-small" id="resetBtn">↺ Choose another</button>
+                <button class="btn btn-primary btn-small" id="predictBtn">🔍 Analyze Leaf</button>
+              </div>
+            </div>
+          </div>
+          <div class="sample-panel">
+            <div class="sample-head">
+              <p class="sample-label">Test the model with labelled sample leaves
+                <span class="sample-count" id="sampleCount"></span>
+              </p>
+              <div class="sample-filters" id="sampleFilters"></div>
+            </div>
+            <div class="sample-gallery" id="sampleGallery">
+              <p class="sample-hint">Loading sample leaves…</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result card -->
+        <div class="card result-card" aria-live="polite">
+          <div class="result-empty" id="resultEmpty">
+            <div class="empty-icon">🔬</div>
+            <p>Upload a leaf image to see the diagnosis appear here.</p>
+          </div>
+
+          <div class="result-data hidden" id="resultData">
+            <div class="result-header">
+              <div class="result-badge" id="resultBadge">⚠️ Suspected Condition</div>
+              <p class="result-disease" id="resultDisease">—</p>
+              <p class="result-scientific" id="resultScientific">—</p>
+            </div>
+            <div class="confidence-block">
+              <p class="confidence-title">Model Confidence</p>
+              <div class="bar-row">
+                <span class="bar-label" id="barLabel1">—</span>
+                <div class="bar-track"><div class="bar-fill" id="barFill1" style="width:0%"></div></div>
+                <span class="bar-pct" id="barPct1">0%</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label" id="barLabel2">—</span>
+                <div class="bar-track"><div class="bar-fill" id="barFill2" style="width:0%"></div></div>
+                <span class="bar-pct" id="barPct2">0%</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label" id="barLabel3">—</span>
+                <div class="bar-track"><div class="bar-fill" id="barFill3" style="width:0%"></div></div>
+                <span class="bar-pct" id="barPct3">0%</span>
+              </div>
+            </div>
+            <div class="treatment-box">
+              <p class="treatment-title">💊 Recommended Action</p>
+              <ul id="treatmentList"></ul>
+            </div>
+            <p class="result-note" id="resultSavedNote">Diagnosis runs on the backend CNN when available; a built-in browser demo guarantees the app always works.</p>
+          </div>
+
+          <div class="result-loading hidden" id="resultLoading">
+            <div class="spinner"></div>
+            <p>Running CNN inference…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- My recent scans -->
+  <section class="section" id="myScans">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="section-eyebrow">My Results</p>
+          <h2 class="section-title">My Recent Scans</h2>
+        </div>
+      </div>
+      <div class="my-scans-strip" id="myScansStrip">
+        <p class="table-empty">No scans yet — upload a leaf above to get your first result.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo tips -->
+  <section class="section" id="tips">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-eyebrow">Photo Tips</p>
+        <h2 class="section-title">Take a Better Photo, Get a Better Result</h2>
+      </div>
+      <div class="tips-grid">
+        <div class="tip-card"><span class="tip-emoji">📷</span><h3>Good Light</h3><p>Shoot in daylight, not harsh sun — avoid shadows and glare on the leaf.</p></div>
+        <div class="tip-card"><span class="tip-emoji">🎯</span><h3>One Leaf, Full Frame</h3><p>Crop tightly around a single leaf so the affected area fills the frame.</p></div>
+        <div class="tip-card"><span class="tip-emoji">🖐️</span><h3>Stable Hand</h3><p>Hold the phone steady or place it on a book to avoid motion blur.</p></div>
+        <div class="tip-card"><span class="tip-emoji">🌞</span><h3>Both Sides</h3><p>If unsure, run the top side first — many moulds show on the underside too.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="trust">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-eyebrow">Model Info</p>
+        <h2 class="section-title">What Happens Under the Hood</h2>
+      </div>
+      <div class="arch-flow">
+        <div class="arch-node">📷<span>Leaf Image</span></div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">🛠️<span>Preprocess</span></div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">🧠<span>CNN Model</span></div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">📊<span>Top-3 &amp; Confidence</span></div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">💡<span>Treatment Advice</span></div>
+      </div>
+      <p class="center-note">Backend: Python Flask · Model: TensorFlow/Keras CNN &bullet; Dataset: PlantVillage &amp;bullet; A trained model in <code>model/crop_cnn.h5</code> is used automatically; otherwise the demo classifier runs.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="brand-text">🌾 AgriCare AI</p>
+        <p class="footer-note">AI-Driven Crop Disease Prediction Web App (CNN Image Classifier). B.Tech Major Project.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="diagnose.html">Diagnose</a>
+        <a href="about.html">About Project</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Project</h4>
+        <a href="about.html#objectives">Objectives</a>
+        <a href="about.html#literature">Literature Survey</a>
+        <a href="about.html#timeline">Timeline</a>
+        <a href="contact.html#faq">FAQ</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> AgriCare AI · Academic demonstration only</p>
+      <p><a href="#demo">Back to top ↑</a></p>
+    </div>
+  </footer>
+
+  <script src="js/predictor.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/diagnose.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>

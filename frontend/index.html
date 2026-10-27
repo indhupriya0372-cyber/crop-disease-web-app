@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgriCare AI | Crop Disease Prediction Web App</title>
+  <meta name="description" content="AI-Driven Crop Disease Prediction Web App (CNN Image Classifier). Upload a crop leaf photo and get an instant diagnosis with treatment advice." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== Navigation ===== -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-icon">🌾</span>
+        <span class="brand-text">Agri<span class="brand-accent">Care</span>&nbsp;AI</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="diagnose.html">Diagnose</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="login.html" class="btn btn-primary btn-small nav-cta">🔐 Login</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <p class="hero-tag">🎓 B.Tech Major Project · CNN Image Classifier</p>
+        <h1 class="hero-title">Spot Crop Disease in <span class="gradient-text">Seconds</span>, Not Seasons</h1>
+        <p class="hero-desc">
+          Upload a photo of any crop leaf and our AI — powered by a Convolutional Neural
+          Network trained on 54,000+ images — instantly tells you the disease, the confidence,
+          and the exact organic treatment to save your harvest.
+        </p>
+        <div class="hero-actions">
+          <a href="diagnose.html" class="btn btn-primary">🧪 Diagnose My Crop</a>
+          <a href="about.html" class="btn btn-ghost">Learn the Science →</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num" data-count="38">0</span><span class="stat-label">Disease Classes</span></div>
+          <div class="stat"><span class="stat-num" data-count="95">0</span><span class="stat-label">% Target Accuracy</span></div>
+          <div class="stat"><span class="stat-num" data-count="2">0</span><span class="stat-label">Second Diagnosis</span></div>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="assets/images/hero-bg.png" alt="" class="hero-bg-img" />
+        <img src="assets/images/tomato_healthy.png" alt="Healthy tomato leaf" class="media-img m1" />
+        <img src="assets/images/potato_late_blight.png" alt="Potato late blight" class="media-img m2" />
+        <img src="assets/images/corn_common_rust.png" alt="Corn common rust" class="media-img m3" />
+        <img src="assets/images/rice_blast.png" alt="Rice blast" class="media-img m4" />
+        <img src="assets/images/brinjal_healthy.png" alt="Healthy brinjal leaf" class="media-img m5" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Stats band ===== -->
+  <section class="stats-band">
+    <div class="container stats-band-inner">
+      <div class="band-item"><span class="band-emoji">📉</span><p>20–40% of crops lost yearly to disease</p></div>
+      <div class="band-item"><span class="band-emoji">💸</span><p>$220B annual loss worldwide</p></div>
+      <div class="band-item"><span class="band-emoji">📷</span><p>1 photo · 2 seconds · 1 clear answer</p></div>
+    </div>
+  </section>
+
+  <!-- ===== Why us ===== -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-eyebrow">Why AgriCare AI</p>
+        <h2 class="section-title">Your Pocket Plant Doctor</h2>
+        <p class="section-sub">Built for farmers, extension officers and students — expert-level diagnosis without the expert wait.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Instant Results</h3>
+          <p>Disease name, confidence score and trusted treatment advice in under 2 seconds after upload.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <h3>Deep Learning CNN</h3>
+          <p>A Convolutional Neural Network with transfer learning (MobileNetV2 / ResNet50) learns visual disease patterns.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌱</div>
+          <h3>Organic-First Advice</h3>
+          <p>Recommendations are eco-friendly and cost-effective — less pesticide, safer food, healthier soil.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Confidence Scores</h3>
+          <p>See exactly how sure the model is, with the top three possibilities ranked for you.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Works on Any Phone</h3>
+          <p>Responsive design means a poor network farm connection can still reach the clinic.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🗂️</div>
+          <h3>History &amp; Tracking</h3>
+          <p>Every scan is saved to your farmer account so you can track your farm's health across seasons.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section class="section section-alt" id="how">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-eyebrow">How It Works</p>
+        <h2 class="section-title">From Photo to Prescription in 4 Steps</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Upload Leaf Photo</h3>
+          <p>Point your phone at the affected leaf and snap a picture — any crop, any stage.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Preprocessing</h3>
+          <p>The image is resized to 256×256, normalized and augmented to match the training data.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>CNN Classification</h3>
+          <p>Convolutional layers extract texture, colour and spot features; fully-connected layers score all classes.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>Diagnosis &amp; Advice</h3>
+          <p>Top match + confidence bar + symptoms + organic treatment plan — ready in 2 seconds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Disease gallery ===== -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-eyebrow">Disease Library</p>
+        <h2 class="section-title">What It Can Detect</h2>
+        <p class="section-sub">A growing library of crop-disease pairs from the PlantVillage dataset — hover to see details.</p>
+      </div>
+      <div class="gallery-grid">
+        <figure class="g-card">
+          <img src="assets/images/tomato_healthy.png" alt="Healthy tomato leaf" loading="lazy" />
+          <figcaption><h3>Tomato · Healthy</h3><p>Solanum lycopersicum</p></figcaption>
+        </figure>
+        <figure class="g-card">
+          <img src="assets/images/tomato_leaf_mold.png" alt="Tomato leaf mold" loading="lazy" />
+          <figcaption><h3>Tomato · Leaf Mold</h3><p>Fulvia fulva</p></figcaption>
+        </figure>
+        <figure class="g-card">
+          <img src="assets/images/potato_healthy.png" alt="Healthy potato leaf" loading="lazy" />
+          <figcaption><h3>Potato · Healthy</h3><p>Solanum tuberosum</p></figcaption>
+        </figure>
+        <figure class="g-card">
+          <img src="assets/images/potato_late_blight.png" alt="Potato late blight" loading="lazy" />
+          <figcaption><h3>Potato · Late Blight</h3><p>Phytophthora infestans</p></figcaption>
+        </figure>
+        <figure class="g-card">
+          <img src="assets/images/corn_healthy.png" alt="Healthy corn leaf" loading="lazy" />
+          <figcaption><h3>Corn · Healthy</h3><p>Zea mays</p></figcaption>
+        </figure>
+        <figure class="g-card">
+          <img src="assets/images/corn_common_rust.png" alt="Corn common rust" loading="lazy" />
+          <figcaption><h3>Corn · Common Rust</h3><p>Puccinia sorghi</p></figcaption>
+        </figure>
+        <figure class="g-card">
+          <img src="assets/images/rice_healthy.png" alt="Healthy rice leaf" loading="lazy" />
+          <figcaption><h3>Rice · Healthy</h3><p>Oryza sativa</p></figcaption>
+        </figure>
+        <figure class="g-card">
+          <img src="assets/images/rice_blast.png" alt="Rice blast" loading="lazy" />
+          <figcaption><h3>Rice · Blast</h3><p>Magnaporthe oryzae</p></figcaption>
+        </figure>
+        <figure class="g-card">
+          <img src="assets/images/brinjal_healthy.png" alt="Healthy brinjal leaf" loading="lazy" />
+          <figcaption><h3>Brinjal · Healthy</h3><p>Solanum melongena</p></figcaption>
+        </figure>
+        <figure class="g-card">
+          <img src="assets/images/brinjal_fruit_rot.png" alt="Brinjal fruit rot" loading="lazy" />
+          <figcaption><h3>Brinjal · Fruit Rot</h3><p>Phomopsis vexans</p></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Crops ===== -->
+  <section class="section section-alt" id="crops">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-eyebrow">Supported Crops</p>
+        <h2 class="section-title">Major Indian Crops Covered</h2>
+      </div>
+      <div class="crops-grid">
+        <button class="crop-chip" data-crop="tomato">🍅 Tomato</button>
+        <button class="crop-chip" data-crop="potato">🥔 Potato</button>
+        <button class="crop-chip" data-crop="corn">🌽 Corn</button>
+        <button class="crop-chip" data-crop="rice">🌾 Rice</button>
+        <button class="crop-chip" data-crop="brinjal">🍆 Brinjal</button>
+        <button class="crop-chip" data-crop="pepper">🌶️ Pepper</button>
+        <button class="crop-chip" data-crop="grape">🍇 Grape</button>
+        <button class="crop-chip" data-crop="apple">🍎 Apple</button>
+        <button class="crop-chip" data-crop="citrus">🍊 Citrus</button>
+      </div>
+      <div class="crop-info" id="cropInfo">
+        <div class="crop-info-text">
+          <h3 id="cropTitle">Tomato 🍅</h3>
+          <p id="cropDesc">10 classes including Leaf Mold, Bacterial Spot, Yellow Leaf Curl Virus, Early Blight, Late Blight, Septoria Leaf Spot and healthy leaves.</p>
+        </div>
+        <img id="cropImg" src="assets/images/tomato_healthy.png" alt="Selected crop" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CNN banner ===== -->
+  <section class="cnn-banner">
+    <div class="container cnn-banner-inner">
+      <div class="cnn-icon">🧠</div>
+      <div>
+        <h2>Powered by a Real Convolutional Neural Network</h2>
+        <p>Transfer learning on MobileNetV2 / ResNet50 over the PlantVillage dataset — with demo fallback built-in so the app always runs.</p>
+      </div>
+      <a href="about.html" class="btn btn-primary">See the Model →</a>
+    </div>
+  </section>
+
+  <!-- ===== Testimonials ===== -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-eyebrow">Early Feedback</p>
+        <h2 class="section-title">What Farmers Want</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"In the village we wait days for an officer to visit. With this, I know by evening what to spray — and it is safer for my family."</p>
+          <span class="testi-name">— Ramesh P., smallholder farmer (survey)</span>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Teaching plant pathology is hard without visuals. The disease library makes concepts click instantly for my students."</p>
+          <span class="testi-name">— Prof. Kavita S., Agriculture College</span>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★☆</div>
+          <p>"We trialled it during the kharif season on tomato. The confidence score helped us trust when to act and when to keep watching."</p>
+          <span class="testi-name">— KVK Extension Officer, Pune</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="section cta-block">
+    <div class="container cta-inner">
+      <h2 class="cta-title">Your field deserves an expert on call.</h2>
+          <p>Login as a farmer to run diagnoses and save every result to your personal dashboard.</p>
+      <a href="diagnose.html" class="btn btn-primary btn-lg">📸 Diagnose a Leaf Now</a>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="brand-text">🌾 AgriCare AI</p>
+        <p class="footer-note">AI-Driven Crop Disease Prediction Web App (CNN Image Classifier). B.Tech Major Project.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="diagnose.html">Diagnose</a>
+        <a href="about.html">About Project</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Project</h4>
+        <a href="about.html#objectives">Objectives</a>
+        <a href="about.html#literature">Literature Survey</a>
+        <a href="about.html#timeline">Timeline</a>
+        <a href="contact.html#faq">FAQ</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> AgriCare AI · Built with HTML, CSS, JavaScript &amp; Python · Academic demonstration only</p>
+      <p><a href="#home">Back to top ↑</a></p>
+    </div>
+  </footer>
+
+  <script src="js/site.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
