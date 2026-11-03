@@ -1,15 +1,14 @@
 /* ============================================================
    AgriCare AI — Diagnose page logic
-   Upload/preview + run prediction via the Node backend
-   (/api/predict on port 5001) with an in-browser fallback so the
-   tool always works, even opened statically.
+   Upload/preview, run the in-browser classifier and save the
+   result to the farmer's history via /api/scans.
    ============================================================ */
 
 (function () {
   'use strict';
 
   const Auth = window.AgriCareAuth;
-  const API_BASE = (Auth && Auth.API_BASE) || 'http://127.0.0.1:5001';
+  const API_BASE = (Auth && Auth.API_BASE) || '';
   const getToken = () => (Auth ? Auth.getToken() : null);
 
   // Turn a server-relative path such as /uploads/x.png into a full URL,
@@ -220,23 +219,21 @@
   }
 
   /* ---------- Prediction ---------- */
-  async function predictViaServer() {
-    if (!currentFile) return null;
+  // The classifier runs in the browser; the result and leaf photo are then
+  // saved to the farmer's history through the Netlify Functions API.
+  async function saveScan(results) {
     const form = new FormData();
-    form.append('image', currentFile);
+    form.append('predictions', JSON.stringify(results.slice(0, 3)));
+    if (currentFile) form.append('image', currentFile);
     try {
-      const result = await Auth.api('/api/predict', { method: 'POST', body: form });
+      const result = await Auth.api('/api/scans', { method: 'POST', body: form });
       if (result.status === 401) {
         window.location.href = 'login.html?next=diagnose.html';
-        return null;
+        return false;
       }
-      if (!result.ok) return null;
-      const data = result.json;
-      const list = Array.isArray(data.predictions) && data.predictions.length ? data.predictions : null;
-      if (list) serverSaved = !!(data.record);
-      return list;
+      return result.ok && !!result.json.record;
     } catch (err) {
-      return null; // backend not running -> local demo fallback
+      return false;
     }
   }
 
@@ -248,11 +245,8 @@
     serverSaved = false;
 
     let results;
-    let fromServer = false;
     try {
-      results = await predictViaServer();
-      fromServer = !!results;
-      if (!results) results = await window.AgriCare.demoPredict(currentImage);
+      results = await window.AgriCare.demoPredict(currentImage);
       if (!results || !results.length) throw new Error('No results returned');
     } catch (err) {
       // Always clear the spinner, otherwise it spins forever.
@@ -286,13 +280,14 @@
     });
 
     if (resultSavedNote) {
-      if (!fromServer) {
-        resultSavedNote.textContent = 'Offline demo classifier (browser fallback) — start the Node backend to use the CNN and save this result.';
-      } else if (serverSaved) {
-        resultSavedNote.textContent = '💾 Saved to My Recent Scans.';
-      } else {
-        resultSavedNote.textContent = 'Diagnosis runs on the backend CNN when available; a built-in browser demo guarantees the app always works.';
-      }
+      resultSavedNote.classList.remove('is-error');
+      resultSavedNote.textContent = 'Saving result…';
+    }
+    serverSaved = await saveScan(results);
+    if (resultSavedNote) {
+      resultSavedNote.textContent = serverSaved
+        ? '💾 Saved to My Recent Scans.'
+        : 'Diagnosis complete, but it could not be saved to your history right now.';
     }
 
     loadMyScans();
@@ -350,9 +345,7 @@
         banner.hidden = false;
         banner.className = 'conn-banner warn';
         banner.textContent =
-          'Backend not connected — this page is running without the server. ' +
-          'Start the Node backend (cd backend && npm start) and the Python AI service (ai-service), ' +
-          'then open http://127.0.0.1:5001. The offline demo classifier still works.';
+          'Cannot reach the server right now — diagnosis still works, but results may not be saved.';
       });
   }
 

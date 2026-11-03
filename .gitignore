@@ -42,3 +42,5 @@ npm-debug.log
 
 /admin@agricare.ai
 /farmer@agricare.ai
+# Sample images copied into the site at build time
+/frontend/samples/

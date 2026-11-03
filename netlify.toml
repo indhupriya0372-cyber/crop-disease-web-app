@@ -1,0 +1,8 @@
+[build]
+  publish = "frontend"
+  # Copy the labelled sample leaf images into the published site.
+  command = "mkdir -p frontend/samples && cp Data/samples/*.png Data/samples/manifest.json frontend/samples/"
+
+[functions]
+  directory = "netlify/functions"
+

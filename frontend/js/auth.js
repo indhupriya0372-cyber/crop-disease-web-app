@@ -6,7 +6,8 @@
 (function () {
   "use strict";
 
-  const API_BASE = "http://127.0.0.1:5001";
+  // The API is served by Netlify Functions on the same origin.
+  const API_BASE = "";
 
   const TOKEN_KEY = "agricare_jwt";
 
@@ -392,7 +393,7 @@
         console.error("Authentication error:", error);
 
         showStatus(
-          "Unable to connect to the Node.js backend. Check that port 5001 is running.",
+          "Unable to reach the server. Please check your connection and try again.",
           "err"
         );
       } finally {
@@ -430,13 +431,13 @@
 
       if (!banner.hidden) {
         banner.textContent =
-          "MongoDB is not connected. Check your backend.";
+          "The database is not available right now.";
       }
     } catch (error) {
       banner.hidden = false;
 
       banner.textContent =
-        "Cannot connect to the Node.js server on port 5001.";
+        "Cannot reach the server right now. Please try again shortly.";
     }
   }
 
