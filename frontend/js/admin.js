@@ -8,7 +8,7 @@
   'use strict';
 
   var Auth = window.AgriCareAuth;
-  var API_BASE = (Auth && Auth.API_BASE) || 'http://127.0.0.1:5001';
+  var API_BASE = (Auth && Auth.API_BASE) || '';
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
